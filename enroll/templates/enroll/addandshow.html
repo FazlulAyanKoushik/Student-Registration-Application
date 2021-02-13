@@ -1,0 +1,54 @@
+{% extends 'enroll/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row ">
+        <div class="col-sm-3">
+            <h4 class='text-center alert alert-info mt-5'>Add new student</h4>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input name="" id="" class="btn btn-success" type="submit" value="Add">
+            </form>
+        </div>
+        <div class="col-sm-8 offset-1">
+            <h4 class="text-center alert alert-secondary mt-5">Show All Students Detail</h4>
+            {% if stud %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in stud %}
+                            <tr>
+                                <th scope="row">{{i.id}}</th>
+                                <td>{{i.name}}</td>
+                                <td>{{i.email}}</td>
+                                <td>{{i.gender}}</td>
+                                <td>{{i.password}}</td>
+                                <td>
+                                    <a href="{% url 'editdata' i.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <form action="{% url 'deletedata' i.id %}" method="post" class="d-inline">
+                                        {% csrf_token %}
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h4 class="texr-center alert alert-warning mt-5"> No Record</h4>
+            {% endif %}
+
+        </div>
+
+    </div>
+{% endblock content %}

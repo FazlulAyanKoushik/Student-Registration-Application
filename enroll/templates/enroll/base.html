@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registation</title>
+    <link rel="stylesheet" href="{% static 'enroll/css/bootstrap.css' %}">
+</head>
+<body>
+    <div class="container bg-light shadow p-3 mb-5 bg-white rounded">
+        <div style="height: 50px;"></div>
+        <h2 class="text-center alert alert-success ">Student Registration Form</h2>
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <script src="{% static 'enroll/js/jquery.js' %}"></script>
+    <script src="{% static 'enroll/js/popper.js' %}"></script>
+    <script src="{% static 'enroll/js/bootstarp.js' %}"></script>
+</body>
+</html>
